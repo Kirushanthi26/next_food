@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ReactNode } from "react";
+import MainHeader from "@/components/mainHeader/main-header";
 
 export const metadata: Metadata = {
   title: "NextLevel Food",
@@ -35,7 +36,7 @@ export default function RootLayout({ children }: Readonly<LayoutProps>) {
             ></path>
           </svg>
         </div>
-
+        <MainHeader />
         {children}
       </body>
     </html>
