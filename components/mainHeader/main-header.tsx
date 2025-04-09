@@ -7,7 +7,7 @@ export default function MainHeader() {
   return (
     <header className={styles.header}>
       <Link href="/" className={styles.logo}>
-        <Image src={logoImg} alt="next logo" width={72} height={72} />
+        <Image src={logoImg} alt="next logo" width={72} height={72} priority />
         NextLevel Food
       </Link>
 
