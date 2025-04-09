@@ -1,8 +1,8 @@
-export default function Home() {
+export default function MealsPage() {
   return (
     <main>
       <h1 style={{ color: "white", textAlign: "center" }}>
-        Time to get started!
+        Time to get started with MealsPage!
       </h1>
     </main>
   );
