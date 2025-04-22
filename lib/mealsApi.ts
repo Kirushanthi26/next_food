@@ -15,3 +15,8 @@ export async function getMeals(): Promise<Meal[]> {
   return meals;
    */
 }
+
+export function getMeal(slug: string): Promise<Meal | null> {
+  const meal = db.prepare(`SELECT * FROM meals WHERE slug = ?`).get(slug) as Meal | undefined;
+  return Promise.resolve(meal ?? null);
+}
