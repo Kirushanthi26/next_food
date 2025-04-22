@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import MealsGrid from "@/components/meals/meals-grid";
-import { get } from "http";
 import { getMeals } from "@/lib/mealsApi";
 
 export default async function MealsPage() {
