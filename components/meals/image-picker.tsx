@@ -53,6 +53,7 @@ export default function ImagePicker({ name, label }: ImagePickerProps) {
           ref={imageInput}
           accept="image/jpeg image/png"
           onChange={handleImageChange}
+          required
         />
       </div>
       <button type="button" className={styles.button} onClick={handlePickClick}>
