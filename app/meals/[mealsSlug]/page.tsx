@@ -9,6 +9,15 @@ type MealDetailsPageProps = {
   };
 };
 
+export async function generateMetadata({ params }: MealDetailsPageProps) {
+  const meal = await getMeal(params.mealsSlug);
+
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+}
+
 export default async function MealDetailsPage({
   params,
 }: MealDetailsPageProps) {
