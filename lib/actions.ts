@@ -3,6 +3,8 @@ import { connectToDatabase } from "@/lib/mongodb";
 import { Meal } from "@/models/Meal";
 import { writeFile } from "fs/promises";
 import path from "path";
+import slugify from "slugify";
+import xss from "xss";
 
 export const shareMeal = async (formData: FormData) => {
   const file = formData.get("mealImage") as File;
@@ -17,12 +19,15 @@ export const shareMeal = async (formData: FormData) => {
   await writeFile(filepath, buffer);
   await connectToDatabase();
 
+  const title = (formData.get("title") as string) ?? "";
+  const instructions = (formData.get("instructions") as string) ?? "";
+
   const newMeal = new Meal({
     creator: formData.get("name") as string,
     creator_email: formData.get("email") as string,
-    title: formData.get("title") as string,
+    title: slugify(title),
     summary: formData.get("summary") as string,
-    instructions: formData.get("instructions") as string,
+    instructions: xss(instructions),
     image: `/uploads/${filename}`,
   });
 
