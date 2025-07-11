@@ -2,6 +2,7 @@
 import { connectToDatabase } from "@/lib/mongodb";
 import { Meal } from "@/models/Meal";
 import { writeFile } from "fs/promises";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import path from "path";
 import slugify from "slugify";
@@ -35,5 +36,6 @@ export const shareMeal = async (formData: FormData) => {
 
   //console.log("Meal data:", meal);
   await newMeal.save();
+  revalidatePath("/meals", "layout");
   redirect("/meals");
 };
