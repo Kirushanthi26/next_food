@@ -10,7 +10,7 @@ export default function MealsGrid({ meals }: MealsGridProps) {
   return (
     <ul className={styles.meals}>
       {meals.map((meal) => (
-        <li key={meal.slug}>
+        <li key={meal.slug || meal.id}>
           <MealItem meal={meal} />
         </li>
       ))}
