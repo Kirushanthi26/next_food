@@ -35,7 +35,7 @@ export async function getMeal(slug: string) {
 
   try {
     await connectToDatabase();
-    const meal = await Meal.findOne({ title: slug });
+    const meal = await Meal.findOne({ slug: slug });
     return meal ?? null;
   } catch (error) {
     console.error("Error fetching meal by slug:", error);
