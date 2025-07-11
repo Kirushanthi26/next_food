@@ -3,6 +3,12 @@ import styles from "./page.module.css";
 import MealsGrid from "@/components/meals/meals-grid";
 import { getMeals } from "@/lib/mealsApi";
 import { Suspense } from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All meals",
+  description: "Delicious meals, shared by a food-loving community.",
+};
 
 async function Meals() {
   const meanls = await getMeals();
