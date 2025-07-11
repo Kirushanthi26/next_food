@@ -8,12 +8,12 @@ type MealsGridProps = {
 
 export default function MealsGrid({ meals }: MealsGridProps) {
   return (
-    <div className={styles.meals}>
+    <ul className={styles.meals}>
       {meals.map((meal) => (
-        <li key={meal.id}>
-          <MealItem {...meal} />
+        <li key={meal.slug}>
+          <MealItem meal={meal} />
         </li>
       ))}
-    </div>
+    </ul>
   );
 }

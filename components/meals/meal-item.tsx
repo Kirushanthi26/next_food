@@ -2,22 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 import classes from "./meal-item.module.css";
+import { Meal } from "@/types/meals";
 
 type MealItemProps = {
-  title: string;
-  slug: string;
-  image: string;
-  summary: string;
-  creator: string;
+  meal: Meal;
 };
-
-export default function MealItem({
-  title,
-  slug,
-  image,
-  summary,
-  creator,
-}: MealItemProps) {
+export default function MealItem({ meal }: MealItemProps) {
+  const { title, slug, image, summary, creator } = meal;
   return (
     <article className={classes.meal}>
       <header>

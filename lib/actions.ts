@@ -2,6 +2,7 @@
 import { connectToDatabase } from "@/lib/mongodb";
 import { Meal } from "@/models/Meal";
 import { writeFile } from "fs/promises";
+import { redirect } from "next/navigation";
 import path from "path";
 import slugify from "slugify";
 import xss from "xss";
@@ -25,12 +26,14 @@ export const shareMeal = async (formData: FormData) => {
   const newMeal = new Meal({
     creator: formData.get("name") as string,
     creator_email: formData.get("email") as string,
-    title: slugify(title),
+    title: formData.get("title") as string as string,
     summary: formData.get("summary") as string,
     instructions: xss(instructions),
     image: `/uploads/${filename}`,
+    slug: slugify(title, { lower: true }),
   });
 
   //console.log("Meal data:", meal);
   await newMeal.save();
+  redirect("/meals");
 };
